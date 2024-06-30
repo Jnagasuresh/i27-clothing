@@ -1,0 +1,35 @@
+# Create manifest file for clothing Deployment 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: i27-clothing-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: i27-clothing-dev
+  template:
+    metadata:
+      labels:
+        name: i27-clothing-dev
+    spec:
+      containers:
+      - name: i27-clothing-dev
+        image: DIT
+        args: ["dev"]
+        ports:
+        - containerPort: 3000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: i27-clothing-dev-svc
+spec: 
+  selector:
+    name: i27-clothing-dev
+  type: NodePort # ClusterIP, NodePort, LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 80 # This is the service port 
+    targetPort: 3000
