@@ -1,23 +1,20 @@
 # Dockerfile for react application
 # docker build -t node:v1 .
 
-
-# reference : https://github.com/devopswithcloud/weather-app/blob/master/Dockerfile
-
 FROM node:14
-ARG SRC_DIR=/opt/i27
-# Which will be inside the container
+ARG SRC_DIR=/OPT/i27
+# which will be insidethe container
 RUN mkdir $SRC_DIR
-# Set the Working Directory  inside the container
+# Set the working directory inside container
 WORKDIR $SRC_DIR
 
-# Copy the Current Contnet to /opt/i27 directory , this is our home dir 
+# Copy the current content to /opt/i27 directory, this our home dir
 COPY . $SRC_DIR
 
-# Install nodejs dependencies 
-RUN npm install 
+# Install nodejs dependencies
+RUN npm install
 
-# Expose the port 
+# Expose the port
 EXPOSE 3000
 
 # The script to start the application with different environments

@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Set the environemnt to dev, if not provided
+# Set the environment to dev
+
 ENVIRONMENT="${1:-dev}"
 
 case "$ENVIRONMENT" in
@@ -9,15 +10,15 @@ case "$ENVIRONMENT" in
         npm run start:dev
         ;;
     test)
-        echo "Starting the application in Test mode..."
+        echo "Starting the application in test mode..."
         npm run start:test
-        ;;   
-    prod) 
-        echo "Starting the application in Production mode..."
-        npm run start:prod
         ;;
+    prod)
+        echo "Starting the application in production mode..."
+        npm run start:prod
+        ;;        
     *)
-        echo "Invalid environment specified, Valid options are 'dev', 'test', 'prod'"
+        echo "Invalid environment selected, valid options are 'dev', 'test' or 'prod'"
         exit 1
         ;;
 esac
